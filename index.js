@@ -17,19 +17,15 @@ exports.extract = function(text, options){
     // only bother stemming if the word will be used
     if (!usePhrase(word, options)) return word;
     var stem = natural.PorterStemmer.stem(word);
-    if (!unstemmed.hasOwnProperty(stem)) unstemmed[stem] = [];
-    unstemmed[stem].push(word);
+    // Store the shortest word that matches this stem for later destemming
+    if (!unstemmed.hasOwnProperty(stem) || word.length < unstemmed[stem].length){
+      unstemmed[stem] = word;
+    }
     return stem;
   };
 
   var destem = function(stem){
-    // Find the most frequent word associated with this stem and return it
-    return _.chain(unstemmed[stem])
-      .groupBy()
-      .values()
-      .sortBy('length')
-      .last()
-      .value()[0];
+    return unstemmed[stem];
   };
 
   if (!text) return [];
