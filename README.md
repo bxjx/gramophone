@@ -68,7 +68,7 @@ Extracts the keywords from html text elements. The default is false.
 keyword.extract('<strong>beep</strong>, <strong>beep</strong> and <strong>foo</strong>', {html: true})
 ```
 
-Returns `['beep', 'foot']`.
+Returns `['beep', 'foo']`.
 
 #### Option: min
 
@@ -87,7 +87,6 @@ a list ([N1, N2]), only look for the phrases with N1 or N2 words etc.. The
 defualt is too look for [1, 2, 3] word ngrams.
 
 ```js
-// Only return 2 and 3 word length phrases
 keyword.extract('beep and beep and beep bop boop and foo and foo bar', {ngrams: [2, 3]})
 ```
 
@@ -145,7 +144,7 @@ Wow. I could probably make this more intuitive. Open to suggestions.
 
 --------------------------------------------------------
 <a name="stream"></a>
-### gramophone.stream([, options])
+### gramophone.stream([options])
 
 Returns a through stream that reads in the text stream and emits keywords
 based on the options passed. It uses the same options as `extract`. Note: this
@@ -159,8 +158,8 @@ See first example.
 ### gramophone.transformStream([options])
 
 Returns a through stream that reads in the stream and emits keywords for each
-data read. By default it assumes that each data read in a string. Alternatively
-the stream can read and write to objects properties. To read
+data read. By default, it assumes that each data read in a string. Alternatively
+the stream can read and write to objects. To read
 the text from an object property, specify the `from` option. If you want to
 write the keywords back to the object, also specify the `to` option.
 
