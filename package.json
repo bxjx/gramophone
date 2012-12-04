@@ -1,6 +1,6 @@
 {
   "name": "gramophone",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "description": "extracts most frequently used keywords and phrases from text",
   "keywords": [
