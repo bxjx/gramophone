@@ -15,14 +15,8 @@ exports.extract = function(text, options){
 
   var stem = function(word){
     var stem = natural.PorterStemmer.stem(word);
-    if (!unstemmed[stem]) unstemmed[stem] = [];
-    try{
-      unstemmed[stem].push(word);
-    }catch(e){
-      console.log(stem);
-      console.log(unstemmed[stem]);
-      console.error(e);
-    }
+    if (!unstemmed.hasOwnProperty(stem)) unstemmed[stem] = [];
+    unstemmed[stem].push(word);
     return stem;
   };
 

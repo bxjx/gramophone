@@ -63,7 +63,7 @@ test('with {stopWords: [word]} as option', function(t){
 });
 
 test('with {stem: true} as option', function(t){
-  var text = "I have colleagues. I am a colleague. I like colleague.";
+  var text = "I have really smart colleagues. I am a colleague. I like colleague.";
   var options = { stem: true, score: true };
   var results = k.extract(text, options);
   t.deepEqual(results, [{ term: 'colleague', tf: 3}], 'use stemming');
