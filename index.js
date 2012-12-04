@@ -14,6 +14,8 @@ exports.extract = function(text, options){
   var unstemmed = {};
 
   var stem = function(word){
+    // only bother stemming if the word will be used
+    if (!usePhrase(word, options)) return word;
     var stem = natural.PorterStemmer.stem(word);
     if (!unstemmed.hasOwnProperty(stem)) unstemmed[stem] = [];
     unstemmed[stem].push(word);
@@ -61,10 +63,7 @@ exports.extract = function(text, options){
     tf.addDocument(tokenized);
     keywordsForNgram = tf.listMostFrequestTerms(0);
     keywordsForNgram = _.select(keywordsForNgram, function(item){
-      return whitelisted(item.term, options.startWords) || 
-        !_.detect(item.term.split(' '), function(term){
-          return blacklisted(term, options.stopWords);
-        });
+      return usePhrase(item.term, options);
     });
     results = results.concat(keywordsForNgram);
   });
@@ -211,5 +210,12 @@ function blacklisted(term, extraStopWords){
   }
   return  _.indexOf(stopWords, term) !== -1 ||
     _.indexOf(extraStopWords, term) !== -1;
+}
+
+function usePhrase(phrase, options){
+  return whitelisted(phrase, options.startWords) || 
+    !_.detect(phrase.split(' '), function(term){
+      return blacklisted(term, options.stopWords);
+    });
 }
 
