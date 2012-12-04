@@ -1,6 +1,8 @@
 Gramophone
 ==========
 
+[![Build Status](https://secure.travis-ci.org/bxjx/gramophone.png?branch=master)](https://travis-ci.org/bxjx/gramophone)
+
 Extracts most frequently used keywords and phrases from text. It excludes
 common stop words. It can be configured to extract arbitary length phrases
 (ngrams) rather than just keywords.
