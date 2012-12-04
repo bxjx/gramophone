@@ -99,7 +99,6 @@ Returns `['beep bop boop', 'foo bar']`.
 Add extra stopWords to be used in addition to the English set.
 
 ```js
-// Only return 2 and 3 word length phrases
 keyword.extract('foo et bar et foo et bar et foo', {stopWords: ['et']})
 ```
 
@@ -110,7 +109,6 @@ Returns `['foo', 'bar']`.
 Any words in this list are whitelisted even if they are a stop word.
 
 ```js
-// Only return 2 and 3 word length phrases
 keyword.extract('foo and bar with foo and bar', {startWords: ['and']})
 ```
 
