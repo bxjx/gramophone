@@ -15,8 +15,8 @@ request('https://github.com/substack/stream-handbook/blob/master/readme.markdown
 
 Would write out:
 ```
-readable-stream
-writable-stream
+readable stream
+writable stream
 ```
 
 API
