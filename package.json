@@ -10,7 +10,7 @@
     "npl"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/tap test"
+    "test": "./node_modules/.bin/tap test/*"
   },
   "license": "MIT",
   "dependencies": {
