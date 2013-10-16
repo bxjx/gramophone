@@ -94,8 +94,23 @@ exports.extract = function(text, options){
     });
   }
 
-  // Return results with scores or without depending on options
-  combined =  options.score ? combined : _.pluck(combined, 'term');
+  if (options.flatten){
+    // Flatten the results so that there is a list item for every occurence of
+    // the term
+    combined = _.flatten(
+      _.map(combined, function(result){
+        var flattened = [];
+        for (var i=0; i < result.tf; i++){
+          flattened.push(result.term);
+        }
+        return flattened;
+      })
+    );
+  }else{
+    // Return results with scores or without depending on options
+    combined =  options.score ? combined : _.pluck(combined, 'term');
+  }
+
   
   // Limit the results
   if (options.limit){
