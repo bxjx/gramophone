@@ -8,6 +8,7 @@ common stop words. It can be configured to extract arbitary length phrases
 (ngrams) rather than just keywords.
 
 ```js
+// Get the top two most commonly used phrases of two more words in the Stream Handbook
 request('https://github.com/substack/stream-handbook/blob/master/readme.markdown')
   .pipe(gramophone.stream({ngrams: 2, html: true, limit: 2}))
   .on('data', console.error.bind(console));
