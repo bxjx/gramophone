@@ -69,7 +69,7 @@ Returns all occurrences of the ngram. Useful for passing data to Natural's
 TF-IDF function. Note: the original order is not maintained. Off by default.
 
 ```js
-keyword.extract('beep beep and foo bar and beep beep and beep beep and foo bar', {flaten: true})
+keyword.extract('beep beep and foo bar and beep beep and beep beep and foo bar', {flatten: true})
 ```
 
 Returns `['beep beep', 'beep beep', 'beep beep', 'foo bar', 'foo bar']`.
