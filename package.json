@@ -1,6 +1,7 @@
 {
   "name": "gramophone",
   "version": "0.0.3",
+  "repository": "git@github.com:bxjx/gramophone.git",
   "main": "index.js",
   "description": "extracts most frequently used keywords and phrases from text",
   "keywords": [
