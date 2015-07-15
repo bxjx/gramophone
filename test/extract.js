@@ -106,3 +106,17 @@ test('with {cutoff: float} as option', function(t){
 
   t.end();
 });
+
+test('extract apostrophe', function (t){
+  var text = "Today is 15 July - St Swithin's Day. Legend has it that if it rains on St Swithin's Day then the wet weather will continue for 40 days.";
+  var options = {alternativeTokenizer: true};
+  t.deepEqual(k.extract(text, options), ['st swithin\'s day']);
+  t.end();
+});
+
+test('accented characters', function (t){
+  var text = 'Hallo Welt! Das ist ein Text über ganz viele Umlaute wie äöüÄÖÜß. Lörem Ipsüm Lörem Ipsüm.';
+  var options = {ngrams: 1, alternativeTokenizer: true};
+  t.deepEqual(k.extract(text, options), ['lörem', 'ipsüm']);
+  t.end();
+});
