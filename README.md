@@ -154,6 +154,22 @@ be returned as a keyword as `20 / 22 < 1 - 0.5`.
 
 Wow. I could probably make this more intuitive. Open to suggestions.
 
+#### Option: alternativeTokenizer
+
+Gramophone uses Natural to tokenize and extract ngrams. By default, natural uses
+its WordTokenizer which splits words using `/\W+/` as a separator regular
+expression.
+
+This causes words like "London's" to be split into two tokens rather than one.
+It also breaks up accented words, using the accented character as the separator.
+
+Setting `alternativeTokenizer` to `true` uses a more generous regular expression
+that respects these characters.
+
+```js
+keyword.extract('Lörem Ipsüm Lörem Ipsüm.', {alternativeTokenizer: true})
+```
+
 --------------------------------------------------------
 <a name="stream"></a>
 ### gramophone.stream([options])
