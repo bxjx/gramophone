@@ -108,13 +108,25 @@ Returns `['beep bop boop', 'foo bar']`.
 
 #### Option: stopWords
 
-Add extra stopWords to be used in addition to the English set.
+Add extra stopWords to be used in addition to the default words.
 
 ```js
 keyword.extract('foo et bar et foo et bar et foo', {stopWords: ['et']})
 ```
 
 Returns `['foo', 'bar']`.
+
+#### Option: lang
+
+Use stopwords for a language other than English. Supported values are:
+
+```
+ar, bg, cs, da, de, en, es, fi, fr, gr, it, jp, lv, nl, no, pl, pt, ru, sk, sv, tr
+```
+
+You can also use the language keyword `all` when you do not know the language in
+advance. This uses all of the stopwords for all of the languages and so might
+have unexpected effects in some circumstances.
 
 #### Option: startWords
 
@@ -186,7 +198,7 @@ Emits the data: `{ text: 'foo and bar and foo', keywords: [foo] }`.
 Related projects
 ----------------
 
-  * [node-alchemy](https://github.com/framingeinstein/node-alchemy): 
+  * [node-alchemy](https://github.com/framingeinstein/node-alchemy):
     a cloud based keyword extraction service.
   * [natural](https://github.com/NaturalNode/natural): a fantastic natural
     language processing library for node.js. Checkout
